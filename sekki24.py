@@ -49,12 +49,11 @@ def get24SekkiDay(year, no = None):
     for n in no:
         sekki = n - 1
         result.append({
-            #"year": year + sekki24_DA[sekki]["y"],
             "index": sekki24_DA[sekki]["index"],
             "year": year,
             "month": sekki24_DA[sekki]["month"],
             "name": sekki24_DA[sekki]["name"],
-            "day": sekki24Calc(year - int(sekki24_DA[sekki]["y"]), n),
+            "day": sekki24Calc(year + int(sekki24_DA[sekki]["y"]), n),
         })
     
     return result
