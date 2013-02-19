@@ -54,7 +54,7 @@ def get24SekkiDay(year, no = None):
             "year": year,
             "month": sekki24_DA[sekki]["month"],
             "name": sekki24_DA[sekki]["name"],
-            "day": sekki24Calc(year, n),
+            "day": sekki24Calc(year - int(sekki24_DA[sekki]["y"]), n),
         })
     
     return result
