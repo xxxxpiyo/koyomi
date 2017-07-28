@@ -37,7 +37,7 @@ sekki24_DA = [
 def koukeikaku2date(year, kaku, jisa = 9):
     pass
 
-def get24SekkiDay(year, no = None):
+def get24SekkiDay(year, month=None, no = None):
     result = []
     if no == None:
         no = []
@@ -46,15 +46,29 @@ def get24SekkiDay(year, no = None):
             no.append(i)
             i = i + 1
 
-    for n in no:
+    if month is not None:
+      for n in no:
         sekki = n - 1
-        result.append({
-            "index": sekki24_DA[sekki]["index"],
-            "year": year,
-            "month": sekki24_DA[sekki]["month"],
-            "name": sekki24_DA[sekki]["name"],
-            "day": sekki24Calc(year + int(sekki24_DA[sekki]["y"]), n),
-        })
+        if sekki24_DA[sekki]["month"] == month:
+            result.append({
+                "index": sekki24_DA[sekki]["index"],
+                "year": year,
+                "month": sekki24_DA[sekki]["month"],
+                "name": sekki24_DA[sekki]["name"],
+                "day": sekki24Calc(year + int(sekki24_DA[sekki]["y"]), n),
+            })
+        else:
+            continue
+    else:        
+        for n in no:
+            sekki = n - 1
+            result.append({
+                "index": sekki24_DA[sekki]["index"],
+                "year": year,
+                "month": sekki24_DA[sekki]["month"],
+                "name": sekki24_DA[sekki]["name"],
+                "day": sekki24Calc(year + int(sekki24_DA[sekki]["y"]), n),
+            })
     
     return result
         
